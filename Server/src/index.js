@@ -1,12 +1,15 @@
-const server = require('./app')
-
+const server = require("./app");
 const PORT = 3001;
+const { conn } = require("./DB_connection");
 
-server.listen(PORT, () => {
-   console.log('Server raised in port: ' + PORT);
-});
-
-
+conn
+  .sync({})
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log("Server raised in port: " + PORT);
+    });
+  })
+  .catch((error) => console.log(error));
 
 
 // const http = require("http")
@@ -19,7 +22,6 @@ server.listen(PORT, () => {
 //     const { url } = req
 //     if (url.includes("/rickandmorty/character")) {
 //         const id = Number(url.split("/").pop())
-
 
 //         getCharById(res, id)
 //     }
@@ -52,4 +54,3 @@ server.listen(PORT, () => {
 // server.use(express.json())
 
 // server.use("/rickandmorty", routes)
-
