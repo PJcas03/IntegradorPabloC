@@ -47,24 +47,41 @@ export const addFav = (character) => {
    }
 }
 
- export const removeFav = (id) => {
+//  export const removeFav = (id) => {
 
-    const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+//     const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
 
-    try {
-      return async (dispatch) => {
+//     try {
+//       return async (dispatch) => {
 
-         const { data } = await axios.delete(endpoint)
+//          const { data } = await axios.delete(endpoint)
 
-            return dispatch({
-               type: 'REMOVE_FAV',
-               payload: data,
-         });
-         ;
-      };
-    } catch (error) {
-      console.log(error);
-    }
+//          return dispatch({
+//             type: 'REMOVE_FAV',
+//             payload: data,
+//          });
+//       };
+//     } catch (error) {
+//       console.log(error);
+//     }
     
- };
+//  };
+
+export const removeFav = (id) => {
+   const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+
+  try{
+     return async (dispatch) =>{
+        const {data} = await axios.delete(endpoint);
+
+        return dispatch({
+           type: 'REMOVE_FAV',
+           payload: data,
+        })
+     }
+
+  }catch(error){
+     return error
+  }
+};
 

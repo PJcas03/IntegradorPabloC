@@ -11,7 +11,7 @@ const router = Router()
 router.get('/character/:id', getCharById)
 router.get('/login', login)
 router.post('/fav', postFav)
-router.delete('/fav', deleteFav)
+router.delete('/fav/:id', deleteFav)
 
 router.post('/login', postUser)
 
